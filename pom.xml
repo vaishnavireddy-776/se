@@ -5,19 +5,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.1.0</modelVersion>
-
+  <modelVersion>4.0.0</modelVersion>
+	 
   <parent>   
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.9.9</version>
+    <version>2.6.0</version>
     <relativePath/> 
   </parent>
 
   <groupId>com.virtualevent</groupId>
   <artifactId>event-app</artifactId>
   <version>1.0-SNAPSHOT</version>
-   <packaging>pom</packaging>
+   <packaging>jar</packaging>
   <name>Virtual Event Application</name>
   <url>http://www.example.com</url>
 
@@ -38,41 +38,31 @@
     </dependencies>
   </dependencyManagement>
 
-  <dependencies>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>  
+  <dependencies>  
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.0.0-M1</version>
+      <version>5.0.0-M1</version><!--$NO-MVN-MAN-VER$-->
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.12.0</version>
+      <version>3.12.0</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.5</version>
+      <version>3.5</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
   </dependencies>
 
   <build>
     <finalName>event-app</finalName>
-    <pluginS>
+    <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.1</version><!--$NO-MVN-MAN-VER$-->
         <configuration>
           <source>11.7</source>
           <target>11.7</target>
@@ -84,20 +74,36 @@
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
+        <version>3.3.2</version><!--$NO-MVN-MAN-VER$-->
       </plugin>
-      <plugin>
+      <plugin> 
+	<groupId>org.eclipse.jetty</groupId>
+<artifactId>jetty-maven-plugin</artifactId> 
+<version>9.4.35.v20201120</version> 
+<configuration> 
+<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+ </configuration>
+  </plugin>
+  <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.3.0</version><!--$NO-MVN-MAN-VER$-->
         <configuration>
-          <archeve>
+          <archive>
             <manifest>
               <mainClass>com.virtualevent.mainApp</mainClass>
             </manifest>
-          </archeve>
+          </archive>
         </configuration>
-      </plugin>
-    </pluginS>
+      </plugin> 
+      <plugin>
+	<groupId>org.eclipse.jetty</groupId>
+<artifactId>jetty-maven-plugin</artifactId> 
+<version>9.4.35.v20201120</version> 
+<configuration> 
+<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+ </configuration>
+  </plugin>
+    </plugins>
   </build>
   <profiles>
     <profile>
@@ -107,4 +113,4 @@
       </properties>
     </profile>
   </profiles>
-<project>
+</project>
